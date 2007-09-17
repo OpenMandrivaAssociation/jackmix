@@ -1,6 +1,6 @@
 %define name	jackmix
 %define version	0.1.0.r1
-%define release %mkrel 2
+%define release %mkrel 3
 %define major 0
 %define libname %mklibname %{name} %major
 
@@ -73,7 +73,7 @@ Categories=Qt;Mixer;Audio;AudioVideo;
 StartupNotify=false
 EOF
 
-rm -f %buildroot%_libdir/{*.la,*.so}
+rm -f %buildroot%_libdir/{*.la,libcore.so,libmixingelements.so,libqosc.so}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -96,4 +96,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n %libname
 %defattr(-, root, root)
-%_libdir/*.so.%{major}*
+%_libdir/*.so*
