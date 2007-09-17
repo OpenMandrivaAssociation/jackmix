@@ -56,15 +56,22 @@ perl -p -i -e 's/CXXLD\)/CXXLD\)\ \-L\/usr\/lib\/qt3\/lib\ \-ljack/g' jackmix/Ma
 										
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="sound_section.png" needs="x11" title="JackMix" longtitle="Mixer for JACK audio server" section="Multimedia/Sound"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
+cat << EOF > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Name=Mixer for JACK audio server
+Icon=sound_section
+Exec=%{name}
+Terminal=false
+Type=Application
+Categories=Qt;Mixer;Audio;AudioVideo;
+StartupNotify=false
 EOF
 
-rm -f %buildroot%_libdir/*.la
+rm -f %buildroot%_libdir/{*.la,*.so}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,9 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README
 %{_bindir}/%name
-%{_menudir}/%name
+%{_datadir}/applications/*.desktop
 
 %files -n %libname
 %defattr(-, root, root)
-%_libdir/*.so.*
-%_libdir/*.so
+%_libdir/*.so.%{major}*
