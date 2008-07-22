@@ -1,6 +1,6 @@
 %define name	jackmix
 %define version	0.1.0.r1
-%define release %mkrel 3
+%define release %mkrel 5
 %define major 0
 %define libname %mklibname %{name} %major
 
