@@ -1,0 +1,22 @@
+--- matrix/mixingmatrix.h~	2005-05-04 19:59:21.000000000 +0800
++++ matrix/mixingmatrix.h	2007-09-17 13:51:08.000000000 +0800
+@@ -54,7 +54,7 @@
+ 		return ( ( element == n.element ) && ( slot == n.slot ) );
+ 	}
+ 	QString debug() {
+-		return QString( "(%1,%2)" ).arg( int( element ) ).arg( slot );
++		return QString( "(%1,%2)" ).arg( (long int)( element ) ).arg( slot );
+ 	}
+ 	bool exists() const;
+ };
+--- matrix/connectionlister.cpp~	2005-05-04 19:59:21.000000000 +0800
++++ matrix/connectionlister.cpp	2007-09-17 13:51:45.000000000 +0800
+@@ -140,7 +140,7 @@
+ 
+ ElementConnectView::ElementConnectView( QListView* p, Element* e ) : QListViewItem( p ), _element( e ) {
+ 	//qDebug( "ElementConnectView::ElementConnectView( %p, %p )", p, _element );
+-	setText( 0, QString( "%1" ).arg( int( e ) ) );
++	setText( 0, QString( "%1" ).arg( (long int)( e ) ) );
+ 	setSelectable( false );
+ 	QStringList tmp = e->getPropertyList();
+ 	for ( uint i=0; i<tmp.count(); i++ ) {
