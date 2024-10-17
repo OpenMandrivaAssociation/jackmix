@@ -12,7 +12,7 @@ Release: 	%{release}
 Source:		http://roederberg.dyndns.org/~arnold/file_share/jackmix/%{name}-%{version}.tar.bz2
 Patch0:		jackmix-0.1.0.r1-autotools.patch
 Patch1:		jackmix-0.1.0.r1-x86_64.patch
-URL:		http://pilatus.roederberg.dyndns.org/~arnold/jackmix/
+URL:		https://pilatus.roederberg.dyndns.org/~arnold/jackmix/
 License:	GPL
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
