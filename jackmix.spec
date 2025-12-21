@@ -16,6 +16,11 @@ URL:		https://pilatus.roederberg.dyndns.org/~arnold/jackmix/
 License:	GPL
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	qt3-devel jackit-devel liblo-devel
 Requires: 	%libname = %version-%release
 
